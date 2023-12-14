@@ -1,29 +1,34 @@
 <angular-post-header />
 <div class="bg-black text-white w-full rounded-l-lg">
-      <div class="pt-[14rem] text-justify">
-       @for(video of videos$ | async; track video.id ) {
-         <div class="w-3/4 m-auto">
-          <div class="video mb-6">
-              <iframe [src]="sanitizeVideo(video.link)" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
-          </div>    
-          <div class="text p-4 mb-[2.5rem]">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-              provident itaque neque officia asperiores, id quia laboriosam
-              necessitatibus sunt exercitationem, est perspiciatis. Magni in hic
-              repudiandae soluta exercitationem officia inventore est ipsa nostrum
-              eum, qui harum aliquam nisi nam molestias nulla ullam assumenda.
-              Voluptates maiores a minus maxime est iure, ut, harum dolor, esse
-              praesentium reprehenderit excepturi facilis facere obcaecati vero
-              aspernatur et.</p>
-          </div>
-        </div>
-        <div class="flex items-center text-center">
-          <hr class="bg-white w-[46%]">
-          <span class="w-[12%]">December 14th</span>
-          <hr class="bg-white w-[46%]">
-        </div> 
-    } 
-    </div>  
+  <div class="pt-[15%] text-justify">
+    @for(video of videos$ | async; track video.id ) {
+    <div class="w-3/4 m-auto">
+      <div class="flex items-center justify-between">
+        <h1 class="font-black text-4xl">New template syntax flow</h1>
+        <angular-post-horizontal-line width="w-[400px]" />
+      </div>
+      <div class="video mt-[2.5rem] mb-6">
+        <iframe
+          [src]="sanitizeVideo(video.link)"
+          width="100%"
+          height="500px"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="text p-4 mt-[2.5rem] mb-[2.5rem]">
+        <p>
+          Angular's new template flow syntax enhances development by introducing streamlined constructs. With features like conditional expressions, developers can elegantly handle dynamic content rendering. The introduction of the nullish coalescing operator simplifies default values assignment. Template expressions have evolved, enabling developers to write concise and expressive code. These enhancements contribute to a more efficient and readable Angular codebase, empowering developers to create dynamic and responsive applications with greater ease and clarity.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center text-center mb-[5rem]">
+      <hr class="bg-white w-[46%]" />
+      <span class="w-[12%]">December 14th</span>
+      <hr class="bg-white w-[46%]" />
+    </div>
+    }
   </div>
+</div>
 
-<angular-post-footer/>
+<angular-post-footer />
