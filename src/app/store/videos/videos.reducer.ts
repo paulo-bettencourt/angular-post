@@ -4,7 +4,7 @@ import { getVideos } from './videos.actions';
 
 export const initialState = [{
   id: 123,
-  link: "https://youtu.be/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
+  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
 }];
 
 export const videosReducer = createReducer(

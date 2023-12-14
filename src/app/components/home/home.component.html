@@ -3,6 +3,7 @@
   <div class="w-3/4 m-auto">
     <div class="pt-[14rem] text-justify">
       @for(video of videos(); track video.id) {
+        <iframe [src]="sanitizeVideo(video.link)" frameborder="0" allowfullscreen></iframe>
       }
       <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
         provident itaque neque officia asperiores, id quia laboriosam
