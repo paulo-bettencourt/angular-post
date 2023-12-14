@@ -6,11 +6,12 @@ import { Store } from '@ngrx/store';
 import { Video } from 'src/app/models/videos.interface';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 
 @Component({
   selector: 'angular-post-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, HorizontalLineComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
