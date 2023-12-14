@@ -1,10 +1,27 @@
 <angular-post-header />
 <div class="bg-black text-white w-full rounded-l-lg">
-  <div class="w-3/4 m-auto">
     <div class="pt-[14rem] text-justify">
+
       @for(video of videos(); track video.id) {
-        <iframe [src]="sanitizeVideo(video.link)" frameborder="0" allowfullscreen></iframe>
-      }
+        <div class="w-3/4 m-auto">
+          <div class="video mb-6">
+              <iframe [src]="sanitizeVideo(video.link)" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="text p-4 mb-[2.5rem]">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+              provident itaque neque officia asperiores, id quia laboriosam
+              necessitatibus sunt exercitationem, est perspiciatis. Magni in hic
+              repudiandae soluta exercitationem officia inventore est ipsa nostrum
+              eum, qui harum aliquam nisi nam molestias nulla ullam assumenda.
+              Voluptates maiores a minus maxime est iure, ut, harum dolor, esse
+              praesentium reprehenderit excepturi facilis facere obcaecati vero
+              aspernatur et.</p>
+          </div>
+        </div>
+        <hr class="bg-white w-full">
+    }
+
+
       <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
         provident itaque neque officia asperiores, id quia laboriosam
         necessitatibus sunt exercitationem, est perspiciatis. Magni in hic
@@ -285,6 +302,5 @@
       Beatae suscipit officiis distinctio accusamus omnis eum voluptatum.
     </div>
   </div>
-</div>
 
 <angular-post-footer/>
