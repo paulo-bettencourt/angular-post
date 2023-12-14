@@ -17,7 +17,7 @@ export class HomeComponent {
 
   store = inject(Store<{ videos: Video[] }>);
   videos = toSignal<Video[]>(this.store.select('videos'));
-
+  
   constructor() {
     console.log("store: ", this.videos());
   }
