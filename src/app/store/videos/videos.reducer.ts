@@ -1,43 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
+import { Video } from 'src/app/models/videos.interface';
 
-import { getVideos } from './videos.actions';
+import { VideosApiActions } from './videos.actions';
 
-export const initialState = [{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-}, {
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-},{
-  id: 123,
-  link: "https://www.youtube.com/embed/v4HkkjXmEMM?si=-EhqAthFjE4-AAhF"
-}];
 
-export const videosReducer = createReducer(
+export const initialState: ReadonlyArray<Video> = [];
+
+export const booksReducer = createReducer(
   initialState,
-  on(getVideos, (state) => state),
+  on(VideosApiActions.retrievedVideosList, (_state, { videos }) => videos)
 );
