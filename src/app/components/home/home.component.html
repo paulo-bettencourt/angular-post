@@ -2,8 +2,10 @@
 <div class="bg-black text-white w-full rounded-l-lg">
   <div class="w-3/4 m-auto">
     <div class="pt-[14rem] text-justify">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+      @for(video of videos(); track video.id) {
+        {{ video.link }}
+      }
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
         provident itaque neque officia asperiores, id quia laboriosam
         necessitatibus sunt exercitationem, est perspiciatis. Magni in hic
         repudiandae soluta exercitationem officia inventore est ipsa nostrum

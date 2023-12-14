@@ -1,9 +1,11 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { appRoutes } from './app.routes';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideStore } from '@ngrx/store';
+import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
+import { provideStore, StoreModule } from '@ngrx/store';
+
+import { appRoutes } from './app.routes';
+import { videosReducer } from './store/videos/videos.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,5 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideClientHydration(),
     provideRouter(appRoutes),
+    importProvidersFrom(StoreModule.forRoot({ videos: videosReducer }))
   ],
 };
