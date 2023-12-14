@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './horizontal-line.component.scss',
 })
 export class HorizontalLineComponent {
-  @Input() width!: string;
+  @Input({required: true}) width!: string;
 }
