@@ -13,8 +13,12 @@
 <ng-template #dynamicPost let-video="videoSanitized">
   <div class="w-3/4 m-auto">
     <div class="flex items-center justify-between">
-      <h1 class="font-black text-4xl">New template syntax flow</h1>
-      <angular-post-horizontal-line width="w-[400px]" />
+      <div class="max-w-[75%] inline-block ml-2">
+        <h1 class="font-black text-4xl whitespace-nowrap">{{video.title}}</h1>
+      </div>
+        <div class="w-full justify-items-end">
+          <hr class="bg-white w-[100%]" >
+        </div>
     </div>
     <div class="video mt-[2.5rem] mb-6">
       <iframe
@@ -26,22 +30,13 @@
       ></iframe>
     </div>
     <div class="text p-4 mt-[2.5rem] mb-[2.5rem]">
-      <p>
-        Angular's new template flow syntax enhances development by introducing
-        streamlined constructs. With features like conditional expressions,
-        developers can elegantly handle dynamic content rendering. The
-        introduction of the nullish coalescing operator simplifies default
-        values assignment. Template expressions have evolved, enabling
-        developers to write concise and expressive code. These enhancements
-        contribute to a more efficient and readable Angular codebase, empowering
-        developers to create dynamic and responsive applications with greater
-        ease and clarity.
-      </p>
+      <p>{{video.description}}</p>
     </div>
   </div>
-  <div class="flex items-center text-center mb-[5rem]">
+  <div class="flex items-center text-center">
     <hr class="bg-white w-[46%]" />
     <span class="w-[12%]">December 14th</span>
     <hr class="bg-white w-[46%]" />
   </div>
+  <div class="h-[6rem]"></div>
 </ng-template>
