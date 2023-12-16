@@ -1,6 +1,21 @@
-<div class="flex justify-between bg-black">
-  <angular-post-menu class="w-4/12 sticky h-screen" />
-  <angular-post-header class="w-8/12"/>
-  <!-- <angular-post-home class="w-8/12"></angular-post-home> -->
+<div>
+  <div class="flex h-[12rem]">
+    <div class="w-4/12 bg-white"></div>
+    <angular-post-header class="w-8/12 bg-black h-[12rem]" />
+  </div>
+  <div class="flex">
+    <angular-post-menu class="w-4/12 h-[12rem] bg-white"></angular-post-menu>
+    <angular-post-home class="w-8/12 bg-black text-white rounded-bl-lg" />
+  </div>
+  <div class="flex h-[4rem] items-center">
+    <div class="w-4/12 bg-white"></div>
+    <angular-post-footer class="w-8/12" />
+  </div>
+
+<!--   <div class="flex">
+    <angular-post-menu class="w-4/12" />
+    <router-outlet class="w-8/12"/>
+  </div> -->
 </div>
 
+<!-- class="w-8/12 bg-black text-white rounded-bl-lg" -->

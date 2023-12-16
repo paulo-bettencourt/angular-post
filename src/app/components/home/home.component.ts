@@ -5,7 +5,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Video } from 'src/app/models/videos.interface';
 import { ApiService } from 'src/app/services/api.service';
-import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 import { VideosApiActions } from 'src/app/store/videos/videos.actions';
 
@@ -15,9 +14,8 @@ import { VideosApiActions } from 'src/app/store/videos/videos.actions';
   imports: [
     CommonModule,
     HttpClientModule,
-    HorizontalLineComponent,
-    FooterComponent,
-  ],
+    HorizontalLineComponent
+    ],
   providers: [ApiService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
