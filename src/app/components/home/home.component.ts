@@ -8,17 +8,20 @@ import { ApiService } from 'src/app/services/api.service';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 import { VideosApiActions } from 'src/app/store/videos/videos.actions';
 
+import { FooterComponent } from '../../shared/footer/footer.component';
+
 @Component({
-  selector: 'angular-post-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    HorizontalLineComponent
-    ],
-  providers: [ApiService],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'angular-post-home',
+    standalone: true,
+    providers: [ApiService],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        HorizontalLineComponent,
+        FooterComponent
+    ]
 })
 export class HomeComponent  {
   store = inject(Store<{ videos: Video[] }>);
