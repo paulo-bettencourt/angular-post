@@ -5,17 +5,12 @@
   </div>
   <div class="flex">
     <angular-post-menu class="w-4/12 h-[12rem] bg-white"></angular-post-menu>
-    <angular-post-home class="w-8/12 bg-black text-white rounded-bl-lg" />
+    <div class="w-8/12 bg-black text-white rounded-bl-lg">
+      <router-outlet class="w-8/12 bg-black text-white rounded-bl-lg" />
+    </div>
   </div>
   <div class="flex h-[4rem] items-center">
     <div class="w-4/12 bg-white"></div>
     <angular-post-footer class="w-8/12" />
   </div>
-
-<!--   <div class="flex">
-    <angular-post-menu class="w-4/12" />
-    <router-outlet class="w-8/12"/>
-  </div> -->
 </div>
-
-<!-- class="w-8/12 bg-black text-white rounded-bl-lg" -->
