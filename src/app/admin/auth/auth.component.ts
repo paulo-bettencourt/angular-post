@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'angular-post-login',
+  selector: 'angular-post-auth',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss',
 })
-export class LoginComponent {}
+export class AuthComponent {}
