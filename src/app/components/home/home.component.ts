@@ -13,7 +13,6 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 @Component({
     selector: 'angular-post-home',
     standalone: true,
-    providers: [ApiService],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
     imports: [
