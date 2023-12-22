@@ -22,7 +22,7 @@ import { FooterComponent } from '../../shared/footer/footer.component';
         FooterComponent
     ]
 })
-export class HomeComponent  {
+export default class HomeComponent  {
   store = inject(Store<{ videos: Video[] }>);
   videos$ = this.store.select('videos');
   sanitizer = inject(DomSanitizer);
