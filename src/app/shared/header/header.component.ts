@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, NgZone } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.component';
@@ -10,5 +10,14 @@ import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.comp
   imports: [CommonModule, HorizontalLineComponent, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  zone = inject(NgZone);
+
+  isVisible = false;
+
+  toggleMenu() {
+    this.isVisible = !this.isVisible;
+  }
+}
