@@ -4,9 +4,10 @@
     <div class="hamburguer-bar w-[3rem] h-[0.5rem] bg-white mb-[0.5rem]"></div>
     <div class="hamburguer-bar w-[3rem] h-[0.5rem] bg-white"></div>
   </div>
+
   <hr class="bg-white w-full md:w-1/5 md:mr-[10px] md:visible" [ngClass]="{'invisible': !isVisible}"/>
   <ul
-    [ngClass]="{'hidden': !isVisible}" class="md:mt-[3rem] md:mb-[3rem] md:flex items-center justify-betweenv w-full md:w-3/4 m-auto text-lg font-black"
+    [ngClass]="{'hidden': !isVisible}" class=" md:mt-[3rem] md:mb-[3rem] md:flex items-center justify-betweenv w-full md:w-3/4 m-auto text-lg font-black"
   >
     <li class="m-2.5 transition ease-in-out hover:scale-150">
       <p class="m-10"><a routerLink="posts">Posts</a></p>
