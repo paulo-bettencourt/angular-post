@@ -1,45 +1,46 @@
 <div class="pl-[2rem] pr-[2rem] pb-[2rem] text-justify">
-<!--   <p class="text-justify">
-    Angular Post is a dedicated platform designed for Angular developers seeking a comprehensive and up-to-date resource for staying informed about the latest developments in the Angular ecosystem. 
-  </p> -->
-  <div class="text-justify">
-    @for(video of videos$ | async; track $index ) {
-    <ng-container
-      *ngTemplateOutlet="dynamicPost; context: { videoSanitized: video }"
-    ></ng-container>
-    }
+  <!--   <p class="text-justify">
+      Angular Post is a dedicated platform designed for Angular developers seeking a comprehensive and up-to-date resource for staying informed about the latest developments in the Angular ecosystem. 
+    </p> -->
+    <div class="text-justify">
+      @for(video of videos$ | async; track $index ) {
+      <ng-container
+        *ngTemplateOutlet="dynamicPost; context: { videoSanitized: video }"
+      ></ng-container>
+      }
+    </div>
   </div>
-</div>
-<angular-post-footer />
-
-<ng-template #dynamicPost let-video="videoSanitized">
-  <div class="w-3/4 m-auto">
-    <div class="flex items-center justify-between">
-      <div class="w-full ld:max-w-[75%] inline-block ml-2">
-        <h1 class="font-black text-4xl wrap lg:whitespace-nowrap">{{ video.title }}</h1>
+  <angular-post-footer />
+  
+  <ng-template #dynamicPost let-video="videoSanitized">
+    <div class="w-3/4 m-auto">
+      <div class="flex items-center justify-between">
+        <div class="w-full ld:max-w-[75%] inline-block ml-2">
+          <h1 class="font-black text-4xl wrap lg:whitespace-nowrap">{{ video.title }}</h1>
+        </div>
+        <div class="w-[0] xl:w-full justify-items-end invisible lg:visible">
+          <hr class="bg-white w-[100%]" />
+        </div>
       </div>
-      <div class="w-[0] xl:w-full justify-items-end invisible lg:visible">
-        <hr class="bg-white w-[100%]" />
+      <div class="video mt-[2.5rem] mb-6">
+        <iframe
+          [src]="sanitizeVideo(video.link)"
+          width="100%"
+          height="300rem"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="text p-4 mt-[2.5rem] mb-[2.5rem]">
+        <p>{{ video.description }}</p>
       </div>
     </div>
-    <div class="video mt-[2.5rem] mb-6">
-      <iframe
-        [src]="sanitizeVideo(video.link)"
-        width="100%"
-        height="500px"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
+    <div class="block md:flex items-center text-center">
+      <hr class="bg-white w-full md:w-[46%]" />
+      <span class="w-[12%]">December 14th</span>
+      <hr class="bg-white w-full md:w-[46%]" />
     </div>
-    <div class="text p-4 mt-[2.5rem] mb-[2.5rem]">
-      <p>{{ video.description }}</p>
-    </div>
-  </div>
-  <div class="flex items-center text-center">
-    <hr class="bg-white w-[46%]" />
-    <span class="w-[12%]">December 14th</span>
-    <hr class="bg-white w-[46%]" />
-  </div>
-  <div class="h-[6rem]"></div>
-</ng-template>
-
+    <div class="h-[6rem]"></div>
+  </ng-template>
+  
+  
