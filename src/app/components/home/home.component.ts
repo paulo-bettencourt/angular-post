@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Video } from 'src/app/models/videos.interface';
@@ -20,7 +20,8 @@ import { FooterComponent } from '../../shared/footer/footer.component';
         HttpClientModule,
         HorizontalLineComponent,
         FooterComponent
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class HomeComponent  {
   store = inject(Store<{ videos: Video[] }>);

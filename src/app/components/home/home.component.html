@@ -15,10 +15,10 @@
 <ng-template #dynamicPost let-video="videoSanitized">
   <div class="w-3/4 m-auto">
     <div class="flex items-center justify-between">
-      <div class="max-w-[75%] inline-block ml-2">
-        <h1 class="font-black text-4xl whitespace-nowrap">{{ video.title }}</h1>
+      <div class="w-full ld:max-w-[75%] inline-block ml-2">
+        <h1 class="font-black text-4xl wrap lg:whitespace-nowrap">{{ video.title }}</h1>
       </div>
-      <div class="w-full justify-items-end">
+      <div class="w-[0] xl:w-full justify-items-end invisible lg:visible">
         <hr class="bg-white w-[100%]" />
       </div>
     </div>
