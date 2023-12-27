@@ -11,4 +11,8 @@ export const appRoutes: Route[] = [{
 {
   path: 'about',
   loadComponent: () => import('./components/about/about.component')
+},
+{
+  path: 'register',
+  loadComponent: () => import('./admin/register/register.component')
 }];
