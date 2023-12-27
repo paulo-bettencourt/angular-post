@@ -9,6 +9,6 @@ export class ApiService {
   http = inject(HttpClient);
   
   getVideos() {
-    return this.http.get<any>('https://angular-post-java.onrender.com/videos');
+    return this.http.get<any>('https://angular-post-java.onrender.com/posts');
   }
 }
