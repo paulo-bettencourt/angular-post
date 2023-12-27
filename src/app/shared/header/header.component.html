@@ -14,11 +14,11 @@
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      <a routerLink="register">Register</a>
+      <a [routerLink]="['/register', { auth: 'register' }]">Register</a>
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      <a routerLink="login">Login</a>
+      <a [routerLink]="['/login', { auth: 'login' }]">Login</a>
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
