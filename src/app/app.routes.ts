@@ -5,14 +5,10 @@ export const appRoutes: Route[] = [{
   loadComponent: () => import('./components/home/home.component')
 },
 {
-  path: 'login',
+  path: 'authentication',
   loadComponent: () => import('./admin/auth/auth.component')
 },
 {
   path: 'about',
   loadComponent: () => import('./components/about/about.component')
-},
-{
-  path: 'register',
-  loadComponent: () => import('./admin/register/register.component')
 }];
