@@ -12,11 +12,11 @@ export class ApiService {
     return this.http.get<any>(environment.API_POSTS);
   }
 
-  authentication(authData: any, authComponent: string) {
-    if (authComponent === 'register') {
-      return this.http.post<any>(environment.API_AUTH_REGISTER, authData);
-    } else {
-      return this.http.post<any>(environment.API_AUTH_LOGIN, authData);
-    }
+  login(authData: any) {
+    return this.http.post<any>(environment.API_AUTH_REGISTER, authData);
+  }
+
+  register(authData: any) {
+    return this.http.post<any>(environment.API_AUTH_LOGIN, authData);
   }
 }

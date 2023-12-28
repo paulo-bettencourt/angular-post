@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -8,10 +8,10 @@ import { ApiService } from 'src/app/services/api.service';
   selector: 'angular-post-auth',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
-export default class AuthComponent implements OnInit {
+export default class RegisterComponent {
   form = inject(FormBuilder);
   apiService = inject(ApiService);
   activatedRoute = inject(ActivatedRoute);
@@ -23,17 +23,12 @@ export default class AuthComponent implements OnInit {
   isLogged = false;
   view = 'login'
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((data: any) => {
-      this.paramsRoute = data.params?.auth.slice(0,1).toUpperCase() + data.params?.auth.slice(1); 
-    });
-  }
-
   submitForm() {
     if (this.loginForm.valid) {
       const auth = this.loginForm.value;
-      this.apiService.authentication(auth, this.paramsRoute).subscribe((data) => {
+      this.apiService.register(auth).subscribe((data: any) => {
         this.isLogged = true;
+        this.view = data.auth;
       });
     } else {
       // Form is invalid, handle accordingly

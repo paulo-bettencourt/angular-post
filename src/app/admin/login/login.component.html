@@ -1,0 +1,23 @@
+@if(!isLogged) {
+  <ng-container *ngTemplateOutlet="authentication"></ng-container> 
+} @else {
+  <ng-container *ngTemplateOutlet="userLogged"></ng-container>
+}
+
+<ng-template #authentication>
+  <div id="algn" class="w-full">
+    <div id="container" class="m-auto">
+      <p class="head">Login</p>
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="input-container">
+        <input type="email" placeholder="Enter email" class="inpt" formControlName="username" required>
+        <input type="password" placeholder="Enter password" class="inpt" formControlName="password" required>
+        <button type="submit" class="btn">Login</button>
+      </form>
+  <p class="footer">Don't have an account? <a href="login">Login</a></p>
+    </div>
+  </div> 
+</ng-template>
+
+<ng-template #userLogged>
+  <h1>You are logged in</h1>
+</ng-template>
