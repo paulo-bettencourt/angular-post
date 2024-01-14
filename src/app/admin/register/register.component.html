@@ -11,9 +11,22 @@
       <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="input-container">
         <input type="email" placeholder="Enter email" class="inpt" formControlName="username" required>
         <input type="password" placeholder="Enter password" class="inpt" formControlName="password" required>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn">Register</button>
       </form>
-  <p class="footer">Don't have an account? <a href="register">Register</a></p>
+  <p class="footer">Already have an account? <a href="register" routerLink="/login">Login</a></p>
+  <hr class="w-full" />
+  <div class="container-sign-in w-[50%]">
+    <img
+      src="../../../assets/images/sign-in-facebook.png"
+      alt="block"
+      class="mb-[1rem] mt-[1rem]"
+    />
+    <img
+      src="../../../assets/images/sign-in-google.png"
+      alt="block"
+      class="mb-[1rem]"
+    />
+  </div>
     </div>
   </div> 
 </ng-template>
