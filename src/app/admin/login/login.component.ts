@@ -46,7 +46,6 @@ export default class LoginComponent implements OnInit {
   view = 'login';
   auth = getAuth();
   provider = new GoogleAuthProvider();
-  authenticationChecked = false;
 
   ngOnInit(): void {
     console.log('isLogged: ', this.isLogged);
