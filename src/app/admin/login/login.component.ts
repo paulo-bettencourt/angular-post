@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { environment } from 'environments/environment';
@@ -7,23 +7,16 @@ import { initializeApp } from 'firebase/app';
 import {
   Auth,
   browserLocalPersistence,
-  browserSessionPersistence,
   connectAuthEmulator,
-  FacebookAuthProvider,
   getAuth,
   GoogleAuthProvider,
-  inMemoryPersistence,
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
 } from 'firebase/auth';
 import { ApiService } from 'src/app/services/api.service';
-
-initializeApp(environment.firebaseConfig);
-connectAuthEmulator(getAuth(), 'http://127.0.0.1:9099', {
-  disableWarnings: true,
-});
+import { AuthService } from 'src/app/services/auth.service';
+import { app } from '../../../../server';
 
 @Component({
   selector: 'angular-post-auth',
@@ -32,10 +25,13 @@ connectAuthEmulator(getAuth(), 'http://127.0.0.1:9099', {
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export default class LoginComponent implements OnInit {
+export default class LoginComponent {
+  provider = new GoogleAuthProvider();
+  auth = getAuth();
   form = inject(FormBuilder);
   apiService = inject(ApiService);
   router = inject(Router);
+  authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);
   loginForm = this.form.nonNullable.group({
     email: ['', Validators.required],
@@ -44,30 +40,17 @@ export default class LoginComponent implements OnInit {
   paramsRoute = '';
   isLogged: boolean | null = null;
   view = 'login';
-  auth = getAuth();
-  provider = new GoogleAuthProvider();
 
   ngOnInit(): void {
-    console.log('isLogged: ', this.isLogged);
     this.isUserLoggedIn();
-
-    this.form.nonNullable.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(4)],
-    });
   }
 
   isUserLoggedIn(): void {
     this.auth.onAuthStateChanged((user) => {
-      user ? (this.isLogged = true) : (this.isLogged = false);
+      console.log('USER ', user);
+      this.authService.setData(!!user);
+      user ? this.router.navigate(['/dashboard']) : null;
     });
-  }
-
-  signOut() {
-    this.auth.signOut();
-    console.log('auth sign out: ', this.auth.currentUser);
-    this.isLogged = false;
-    console.log('auth sign out: ', this.isLogged);
   }
 
   submitForm() {
@@ -77,9 +60,13 @@ export default class LoginComponent implements OnInit {
     if (email && password) {
       setPersistence(this.auth, browserLocalPersistence)
         .then(() => {
-          this.isLogged = true;
           console.log('promess');
+          this.authService.setData(true);
           return signInWithEmailAndPassword(this.auth, email, password);
+        })
+        .then(() => {
+          this.router.navigate(['/dashboard']);
+          console.log('chegou ao navigate');
         })
         .catch((error) => {
           this.isLogged = false;

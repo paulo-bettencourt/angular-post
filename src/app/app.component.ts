@@ -7,11 +7,17 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MenuComponent } from './shared/menu/menu.component';
 
 @Component({
-    standalone: true,
-    selector: 'angular-post-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    imports: [RouterModule, MenuComponent, HomeComponent, HeaderComponent, FooterComponent]
+  standalone: true,
+  selector: 'angular-post-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  imports: [
+    RouterModule,
+    MenuComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
 })
 export class AppComponent {
   title = 'angular-post';
