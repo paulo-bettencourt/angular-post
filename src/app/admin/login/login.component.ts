@@ -47,7 +47,6 @@ export default class LoginComponent {
 
   isUserLoggedIn(): void {
     this.auth.onAuthStateChanged((user) => {
-      console.log('USER ', user);
       this.authService.setData(!!user);
       user ? this.router.navigate(['/dashboard']) : null;
     });
@@ -60,13 +59,11 @@ export default class LoginComponent {
     if (email && password) {
       setPersistence(this.auth, browserLocalPersistence)
         .then(() => {
-          console.log('promess');
           this.authService.setData(true);
           return signInWithEmailAndPassword(this.auth, email, password);
         })
         .then(() => {
           this.router.navigate(['/dashboard']);
-          console.log('chegou ao navigate');
         })
         .catch((error) => {
           this.isLogged = false;

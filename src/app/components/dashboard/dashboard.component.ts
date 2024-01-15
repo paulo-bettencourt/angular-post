@@ -20,6 +20,5 @@ export default class DashboardComponent {
     this.auth.signOut();
     this.authService.setData(false);
     this.router.navigate(['/login']);
-    console.log('auth sign out: ', this.auth.currentUser);
   }
 }

@@ -18,6 +18,7 @@ export const authGuard: CanActivateFn = async () => {
       reject
     );
   });
+
   const isLoggedIn = !!user;
 
   authService.setData(isLoggedIn);
