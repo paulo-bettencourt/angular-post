@@ -5,8 +5,14 @@
 }
 
 <ng-template #authentication>
-  <div id="algn" class="w-full">
-    <div id="container" class="m-auto">
+  <div
+    id="algn"
+    class="w-full"
+  >
+    <div
+      id="container"
+      class="m-auto"
+    >
       <p class="head">Login</p>
       <!-- <div class="google-auth">
         <div id="g_id_onload"
@@ -45,20 +51,20 @@
           formControlName="password"
           required
         />
-        <button type="submit" class="btn mt-[1rem]">Login</button>
+        <button
+          type="submit"
+          class="btn mt-[1rem]"
+        >Login</button>
       </form>
       <p class="footer">
         Don't have an account?
-        <a href="login" routerLink="/register">Register</a>
+        <a
+          href="login"
+          routerLink="/register"
+        >Register</a>
       </p>
       <hr class="w-full" />
       <div class="container-sign-in w-[50%]">
-        <img
-          src="../../../assets/images/sign-in-facebook.png"
-          alt="block"
-          class="mb-[1rem] mt-[1rem]"
-          (click)="signInWith('facebook')"
-        />
         <img
           src="../../../assets/images/sign-in-google.png"
           alt="block"
@@ -76,23 +82,23 @@
 
 
 <script>
-  window.fbAsyncInit = function() {
+  window.fbAsyncInit = function () {
     FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
+      appId: '{your-app-id}',
+      cookie: true,
+      xfbml: true,
+      version: '{api-version}'
     });
-      
-    FB.AppEvents.logPageView();   
-      
+
+    FB.AppEvents.logPageView();
+
   };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 </script>
