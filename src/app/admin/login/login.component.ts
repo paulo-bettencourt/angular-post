@@ -6,6 +6,7 @@ import { environment } from 'environments/environment';
 import { initializeApp } from 'firebase/app';
 import {
   Auth,
+  browserLocalPersistence,
   browserSessionPersistence,
   connectAuthEmulator,
   FacebookAuthProvider,
@@ -75,7 +76,7 @@ export default class LoginComponent implements OnInit {
     const password = this.loginForm.value.password;
 
     if (email && password) {
-      setPersistence(this.auth, browserSessionPersistence)
+      setPersistence(this.auth, browserLocalPersistence)
         .then(() => {
           this.isLogged = true;
           console.log('promess');
