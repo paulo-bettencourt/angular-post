@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { environment } from 'environments/environment';
 import { initializeApp } from 'firebase/app';
 import {
+  Auth,
   browserSessionPersistence,
   connectAuthEmulator,
   FacebookAuthProvider,
@@ -19,6 +20,9 @@ import {
 import { ApiService } from 'src/app/services/api.service';
 
 initializeApp(environment.firebaseConfig);
+connectAuthEmulator(getAuth(), 'http://127.0.0.1:9099', {
+  disableWarnings: true,
+});
 
 @Component({
   selector: 'angular-post-auth',
@@ -43,7 +47,22 @@ export default class LoginComponent implements OnInit {
   provider = new GoogleAuthProvider();
 
   ngOnInit(): void {
-    connectAuthEmulator(this.auth, 'http://127.0.0.1:9099');
+    this.isUserLoggedIn();
+  }
+
+  isUserLoggedIn() {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.isLogged = true;
+      } else {
+        this.isLogged = false;
+      }
+    });
+  }
+
+  signOut() {
+    this.auth.signOut();
+    console.log('auth sign out: ', this.auth.currentUser);
   }
 
   submitForm() {
@@ -53,10 +72,11 @@ export default class LoginComponent implements OnInit {
     if (email && password) {
       setPersistence(this.auth, browserSessionPersistence)
         .then(() => {
+          this.isLogged = true;
           return signInWithEmailAndPassword(this.auth, email, password);
         })
         .catch((error) => {
-          // Handle Errors here.
+          this.isLogged = false;
           const errorCode = error.code;
           const errorMessage = error.message;
         });
