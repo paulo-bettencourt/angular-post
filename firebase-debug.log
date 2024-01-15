@@ -1,0 +1,55 @@
+[debug] [2024-01-15T14:19:14.467Z] ----------------------------------------------------------------------
+[debug] [2024-01-15T14:19:14.469Z] Command:       /Users/paulolemos/.nvm/versions/node/v18.17.0/bin/node /Users/paulolemos/.nvm/versions/node/v18.17.0/bin/firebase emulators:start
+[debug] [2024-01-15T14:19:14.469Z] CLI Version:   13.0.3
+[debug] [2024-01-15T14:19:14.469Z] Platform:      darwin
+[debug] [2024-01-15T14:19:14.470Z] Node Version:  v18.17.0
+[debug] [2024-01-15T14:19:14.471Z] Time:          Mon Jan 15 2024 13:19:14 GMT-0100 (Azores Standard Time)
+[debug] [2024-01-15T14:19:14.472Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-15T14:19:14.554Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-15T14:19:14.554Z] > authorizing via signed-in user (pauloblemos@gmail.com)
+[info] i  emulators: Starting emulators: auth, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, hosting"}}
+[debug] [2024-01-15T14:19:16.056Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-01-15T14:19:16.057Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] ⚠  hosting: Hosting Emulator unable to start on port 5000, starting on 5002 instead. {"metadata":{"emulator":{"name":"hosting"},"message":"Hosting Emulator unable to start on port 5000, starting on 5002 instead."}}
+[debug] [2024-01-15T14:19:16.057Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-01-15T14:19:16.057Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-01-15T14:19:16.063Z] [hub] writing locator at /var/folders/fp/9j61w9j56694qcyyg1tjdbqh0000gn/T/hub-angular-post-1a202.json
+[debug] [2024-01-15T14:19:20.888Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/angular-post-1a202/sites 
+[debug] [2024-01-15T14:19:21.989Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/angular-post-1a202/sites 200
+[debug] [2024-01-15T14:19:21.989Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/angular-post-1a202/sites {"sites":[{"name":"projects/angular-post-1a202/sites/angular-post-1a202","defaultUrl":"https://angular-post-1a202.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-01-15T14:19:21.989Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202/webApps/-/config [none]
+[debug] [2024-01-15T14:19:22.804Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202/webApps/-/config 200
+[debug] [2024-01-15T14:19:22.804Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202/webApps/-/config {"projectId":"angular-post-1a202","appId":"1:98752778733:web:b32fe4efa83a7fff1c17e4","storageBucket":"angular-post-1a202.appspot.com","apiKey":"AIzaSyDTjgCp2mQfB9QpF2zmjdkk4dUclBHlgOg","authDomain":"angular-post-1a202.firebaseapp.com","messagingSenderId":"98752778733"}
+[debug] [2024-01-15T14:19:22.828Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202 [none]
+[debug] [2024-01-15T14:19:23.180Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202 200
+[debug] [2024-01-15T14:19:23.181Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/angular-post-1a202 {"projectId":"angular-post-1a202","projectNumber":"98752778733","displayName":"Angular Post","name":"projects/angular-post-1a202","resources":{"hostingSite":"angular-post-1a202"},"state":"ACTIVE","etag":"1_e61d06f4-2318-498b-b6bc-4544a3b0284c"}
+[debug] [2024-01-15T14:19:23.182Z] Specified "public" directory "dist/angular-post/browser" does not exist; Deploy to Hosting site "angular-post-1a202" may fail or be empty.
+[info] i  hosting[angular-post-1a202]: Serving hosting files from: dist/angular-post/browser {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/angular-post/browser\u001b[22m"}}
+[info] ✔  hosting[angular-post-1a202]: Local server: http://127.0.0.1:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5002\u001b[22m\u001b[24m"}}
+[debug] [2024-01-15T14:19:23.331Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-01-15T14:19:23.331Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-01-15T14:19:23.331Z] Starting Emulator UI with command {"binary":"node","args":["/Users/paulolemos/.cache/firebase/emulators/ui-v1.11.7/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/paulolemos/.cache/firebase/emulators/ui-v1.11.7/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-01-15T14:19:23.425Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-01-15T14:19:23.425Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI        │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Hosting        │ 127.0.0.1:5002 │ n/a                        │
+└────────────────┴────────────────┴────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
