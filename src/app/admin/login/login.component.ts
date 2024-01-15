@@ -37,8 +37,8 @@ export default class LoginComponent implements OnInit {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   loginForm = this.form.nonNullable.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required, Validators.minLength(4)],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
   paramsRoute = '';
   isLogged: boolean | null = null;
