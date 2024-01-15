@@ -8,27 +8,19 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 export const authGuard: CanActivateFn = async () => {
   const auth = getAuth();
   const authService = inject(AuthService);
+  const user = await new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        unsubscribe();
+        resolve(user);
+      },
+      reject
+    );
+  });
+  const isLoggedIn = !!user;
 
-  try {
-    const user = await new Promise((resolve, reject) => {
-      const unsubscribe = onAuthStateChanged(
-        auth,
-        (user) => {
-          unsubscribe();
-          resolve(user);
-        },
-        reject
-      );
-    });
+  authService.setData(isLoggedIn);
 
-    const isLoggedIn = !!user;
-    authService.setData(isLoggedIn);
-
-    console.log('GUARD ', isLoggedIn);
-
-    return isLoggedIn;
-  } catch (error) {
-    console.error('Error checking authentication state:', error);
-    return false;
-  }
+  return isLoggedIn;
 };
