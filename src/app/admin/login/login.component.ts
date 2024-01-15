@@ -37,32 +37,37 @@ export default class LoginComponent implements OnInit {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   loginForm = this.form.nonNullable.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required, Validators.minLength(4)],
   });
   paramsRoute = '';
-  isLogged = false;
+  isLogged: boolean | null = null;
   view = 'login';
   auth = getAuth();
   provider = new GoogleAuthProvider();
+  authenticationChecked = false;
 
   ngOnInit(): void {
+    console.log('isLogged: ', this.isLogged);
     this.isUserLoggedIn();
+
+    this.form.nonNullable.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required, Validators.minLength(4)],
+    });
   }
 
-  isUserLoggedIn() {
+  isUserLoggedIn(): void {
     this.auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.isLogged = true;
-      } else {
-        this.isLogged = false;
-      }
+      user ? (this.isLogged = true) : (this.isLogged = false);
     });
   }
 
   signOut() {
     this.auth.signOut();
     console.log('auth sign out: ', this.auth.currentUser);
+    this.isLogged = false;
+    console.log('auth sign out: ', this.isLogged);
   }
 
   submitForm() {
@@ -73,12 +78,15 @@ export default class LoginComponent implements OnInit {
       setPersistence(this.auth, browserSessionPersistence)
         .then(() => {
           this.isLogged = true;
+          console.log('promess');
           return signInWithEmailAndPassword(this.auth, email, password);
         })
         .catch((error) => {
           this.isLogged = false;
           const errorCode = error.code;
           const errorMessage = error.message;
+          console.log('Error Msg: ', errorMessage);
+          console.log('Error Code: ', errorCode);
         });
     }
   }
