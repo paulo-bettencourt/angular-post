@@ -22,6 +22,13 @@
           formControlName="email"
           required
         />
+        @if(loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)) {
+        @if(loginForm.get('email')?.errors?.['required']) {
+        <h3>Please insert an e-mail</h3>
+        }
+        @if(loginForm.get('email')?.errors?.['email']) {
+        <h3>Please insert a valid e-mail</h3>
+        } }
         <input
           type="password"
           placeholder="Enter password"
@@ -29,6 +36,15 @@
           formControlName="password"
           required
         />
+        @if(loginForm.get('password')?.invalid && loginForm.get('password')?.dirty ||
+        loginForm.get('password')?.touched)
+        {
+        @if(loginForm.get('password')?.errors?.['required']) {
+        <h3>Please insert a password</h3>
+        }
+        @if (loginForm.get('password')?.errors?.['minlength']) {
+        <h3>Please insert at least 3 characters</h3>
+        }}
         <button
           type="submit"
           class="btn mt-[1rem]"

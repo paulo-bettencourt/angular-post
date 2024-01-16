@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { environment } from 'environments/environment';
-import { initializeApp } from 'firebase/app';
 import {
   Auth,
   browserLocalPersistence,
-  connectAuthEmulator,
   getAuth,
   GoogleAuthProvider,
   setPersistence,
@@ -16,7 +13,6 @@ import {
 } from 'firebase/auth';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { app } from '../../../../server';
 
 @Component({
   selector: 'angular-post-auth',
@@ -28,14 +24,17 @@ import { app } from '../../../../server';
 export default class LoginComponent {
   provider = new GoogleAuthProvider();
   auth = getAuth();
-  form = inject(FormBuilder);
   apiService = inject(ApiService);
   router = inject(Router);
   authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);
+  form = inject(FormBuilder);
   loginForm = this.form.nonNullable.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    password: [
+      '',
+      Validators.compose([Validators.required, Validators.minLength(3)]),
+    ],
   });
   paramsRoute = '';
   isLogged: boolean | null = null;
