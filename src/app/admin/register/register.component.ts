@@ -16,12 +16,15 @@ export default class RegisterComponent {
   apiService = inject(ApiService);
   activatedRoute = inject(ActivatedRoute);
   loginForm = this.form.nonNullable.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
+    username: ['', Validators.compose([Validators.required, Validators.email])],
+    password: [
+      '',
+      Validators.compose([Validators.required, Validators.minLength(3)]),
+    ],
   });
   paramsRoute = '';
   isLogged = false;
-  view = 'login'
+  view = 'login';
 
   submitForm() {
     if (this.loginForm.valid) {

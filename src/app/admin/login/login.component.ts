@@ -23,7 +23,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export default class LoginComponent {
   provider = new GoogleAuthProvider();
-  auth = getAuth();
   apiService = inject(ApiService);
   router = inject(Router);
   authService = inject(AuthService);
@@ -38,17 +37,21 @@ export default class LoginComponent {
   });
   paramsRoute = '';
   isLogged: boolean | null = null;
-  view = 'login';
+  auth = this.authService.getAuth();
 
-  ngOnInit(): void {
-    this.isUserLoggedIn();
-  }
-
-  isUserLoggedIn(): void {
-    this.auth.onAuthStateChanged((user) => {
-      this.authService.setData(!!user);
-      user ? this.router.navigate(['/dashboard']) : null;
-    });
+  async ngOnInit(): Promise<void> {
+    await new Promise((resolve, reject) => {
+      resolve(this.authService.isUserLoggedIn()),
+        reject(console.log('ERROR: User is not logged in'));
+    })
+      .then(() => {
+        this.authService.getData().value
+          ? this.router.navigate(['/dashboard'])
+          : null;
+      })
+      .catch(() => {
+        console.log('User not logged in');
+      });
   }
 
   submitForm() {

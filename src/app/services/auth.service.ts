@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { getAuth } from 'firebase/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  auth = getAuth();
   private dataSubject$ = new BehaviorSubject<boolean>(false);
 
   setData(data: boolean): void {
@@ -13,5 +15,16 @@ export class AuthService {
 
   getData(): BehaviorSubject<boolean> {
     return this.dataSubject$;
+  }
+
+  getAuth() {
+    return this.auth;
+  }
+
+  isUserLoggedIn(): void {
+    this.auth.onAuthStateChanged((user) => {
+      console.log('auth change', !!user);
+      this.dataSubject$.next(!!user);
+    });
   }
 }
