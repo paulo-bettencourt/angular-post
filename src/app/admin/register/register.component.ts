@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'angular-post-auth',
@@ -11,9 +12,11 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export default class RegisterComponent {
+export default class RegisterComponent implements OnInit {
   form = inject(FormBuilder);
   apiService = inject(ApiService);
+  router = inject(Router);
+  authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);
   loginForm = this.form.nonNullable.group({
     username: ['', Validators.compose([Validators.required, Validators.email])],
@@ -25,6 +28,21 @@ export default class RegisterComponent {
   paramsRoute = '';
   isLogged = false;
   view = 'login';
+
+  async ngOnInit(): Promise<void> {
+    await new Promise((resolve, reject) => {
+      resolve(this.authService.isUserLoggedIn()),
+        reject(console.log('ERROR: User is not logged in'));
+    })
+      .then(() => {
+        this.authService.getData().value
+          ? this.router.navigate(['/dashboard'])
+          : null;
+      })
+      .catch(() => {
+        console.log('User not logged in');
+      });
+  }
 
   submitForm() {
     if (this.loginForm.valid) {

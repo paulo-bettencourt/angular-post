@@ -21,10 +21,11 @@ export class AuthService {
     return this.auth;
   }
 
-  isUserLoggedIn(): void {
-    this.auth.onAuthStateChanged((user) => {
-      console.log('auth change', !!user);
-      this.dataSubject$.next(!!user);
+  isUserLoggedIn(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.auth.onAuthStateChanged((user) => {
+        resolve(this.dataSubject$.next(!!user));
+      });
     });
   }
 }
