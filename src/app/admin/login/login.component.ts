@@ -40,17 +40,13 @@ export default class LoginComponent implements OnInit {
   auth = this.authService.getAuth();
 
   async ngOnInit(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      resolve(this.authService.isUserLoggedIn()),
-        reject(console.log('ERROR: User is not logged in'));
-    })
+    await this.authService
+      .isUserLoggedIn()
       .then(() => {
-        this.authService.getData().value
-          ? this.router.navigate(['/dashboard'])
-          : null;
+        this.router.navigate(['/dashboard']);
       })
       .catch(() => {
-        console.log('User not logged in');
+        console.log('User not autenticated');
       });
   }
 

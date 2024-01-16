@@ -21,10 +21,10 @@ export class AuthService {
     return this.auth;
   }
 
-  isUserLoggedIn(): Promise<void> {
+  isUserLoggedIn(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.auth.onAuthStateChanged((user) => {
-        resolve(this.dataSubject$.next(!!user));
+        !!user ? resolve(true) : reject(false);
       });
     });
   }
