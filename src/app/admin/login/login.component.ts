@@ -75,7 +75,10 @@ export default class LoginComponent {
   }
 
   signInGoogle() {
-    signInWithPopup(this.auth, this.provider)
+    setPersistence(this.auth, browserLocalPersistence)
+      .then(() => {
+        return signInWithPopup(this.auth, this.provider);
+      })
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
