@@ -1,31 +1,53 @@
 <div class="md:flex items-center text-white h-[12rem] text-center relative">
-  <div class="hamburguer-menu absolute top-[8%] right-[3%] md:hidden" (click)="toggleMenu()">
+  <div
+    class="hamburguer-menu absolute top-[8%] right-[3%] md:hidden"
+    (click)="toggleMenu()"
+  >
     <div class="hamburguer-bar w-[3rem] h-[0.5rem] bg-white mb-[0.5rem]"></div>
     <div class="hamburguer-bar w-[3rem] h-[0.5rem] bg-white mb-[0.5rem]"></div>
     <div class="hamburguer-bar w-[3rem] h-[0.5rem] bg-white"></div>
   </div>
   <div class="h-[6rem] md:h-[0]"></div>
-  <hr class="bg-white w-full md:w-1/5 md:mr-[10px] md:visible" [ngClass]="{'invisible': !isVisible}"/>
+  <hr
+    class="bg-white w-full md:w-1/5 md:mr-[10px] md:visible"
+    [ngClass]="{'invisible': !isVisible}"
+  />
   <ul
-    [ngClass]="{'hidden': !isVisible}" class="h-[100vh] md:h-[0] md:mt-[3rem] md:mb-[3rem] md:flex items-center justify-betweenv w-full md:w-3/4 m-auto text-lg font-black bg-black"
+    [ngClass]="{'hidden': !isVisible}"
+    class="h-[100vh] md:h-[0] md:mt-[3rem] md:mb-[3rem] md:flex items-center justify-betweenv w-full md:w-3/4 m-auto text-lg font-black bg-black"
   >
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
       <p class="m-10"><a routerLink="">Posts</a></p>
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
+      @if(isLogged$ | async) {
+      <a routerLink="/register">Publish</a>
+      } @else {
       <a routerLink="/register">Register</a>
+      }
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
+      @if(isLogged$ | async) {
+      <a routerLink="/login">Profile</a>
+      } @else {
       <a routerLink="/login">Login</a>
+      }
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
+      @if(isLogged$ | async) {
+      <a routerLink="about">Logout</a>
+      } @else {
       <a routerLink="about">About</a>
+      }
     </li>
-    <hr class="bg-white visible md:invisible"/>
+    <hr class="bg-white visible md:invisible" />
 
   </ul>
-  <hr class="bg-white w-full md:w-1/5 md:ml-[10px] md:visible" [ngClass]="{'invisible': !isVisible}" />
+  <hr
+    class="bg-white w-full md:w-1/5 md:ml-[10px] md:visible"
+    [ngClass]="{'invisible': !isVisible}"
+  />
 </div>

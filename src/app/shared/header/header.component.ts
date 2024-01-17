@@ -1,8 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, NgZone } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  NgZone,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'angular-post-header',
@@ -10,14 +21,19 @@ import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.comp
   imports: [CommonModule, HorizontalLineComponent, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
-  zone = inject(NgZone);
-
+export class HeaderComponent implements OnInit {
+  authService = inject(AuthService);
+  auth = this.authService.getAuth();
+  isLogged$!: BehaviorSubject<boolean>;
   isVisible = false;
 
   toggleMenu() {
     this.isVisible = !this.isVisible;
+  }
+
+  ngOnInit() {
+    this.isLogged$ = this.authService.getData();
+    console.log('valoor: ', this.isLogged$.value);
   }
 }

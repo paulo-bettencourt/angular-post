@@ -11,31 +11,33 @@ import { VideosApiActions } from 'src/app/store/videos/videos.actions';
 import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
-    selector: 'angular-post-home',
-    standalone: true,
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.scss',
-    imports: [
-        CommonModule,
-        HttpClientModule,
-        HorizontalLineComponent,
-        FooterComponent
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'angular-post-home',
+  standalone: true,
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    HorizontalLineComponent,
+    FooterComponent,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class HomeComponent  {
+export default class HomeComponent {
   store = inject(Store<{ videos: Video[] }>);
   videos$ = this.store.select('videos');
   sanitizer = inject(DomSanitizer);
   apiService = inject(ApiService);
 
   constructor() {
-    this.apiService.getVideos().pipe(
-    ).subscribe((videos) => {
+    this.apiService
+      .getVideos()
+      .pipe()
+      .subscribe((videos) => {
         console.log('fetch request: ', videos),
-        this.store.dispatch(VideosApiActions.retrievedVideosList({videos}));
-        this.store.subscribe(data => console.log("STORE: ", data))
-    });
+          this.store.dispatch(VideosApiActions.retrievedVideosList({ videos }));
+        this.store.subscribe((data) => console.log('STORE: ', data));
+      });
   }
 
   sanitizeVideo(url: string) {
