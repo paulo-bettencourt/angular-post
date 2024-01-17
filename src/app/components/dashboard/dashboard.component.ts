@@ -25,6 +25,7 @@ export default class DashboardComponent implements OnInit {
   router = inject(Router);
   displayName = signal<string | null>('');
   email = signal<string | null>('');
+  data: any;
 
   ngOnInit(): void {
     this.auth.onAuthStateChanged((user) => {
@@ -42,16 +43,18 @@ export default class DashboardComponent implements OnInit {
   firebase() {
     const db = getDatabase();
     console.log('database: ', db);
-    set(ref(db, 'posts'), {
-      username: 'name',
-      email: 'email',
-      profile_picture: 'imageUrl',
-    });
+    // set(ref(db, 'posts/' + new Date().getMilliseconds()), {
+    //   id: new Date().getMilliseconds(),
+    //   username: 'name222',
+    //   email: 'email',
+    //   profile_picture: 'imageUrl',
+    // });
 
-    const starCountRef = ref(db, 'posts');
+    const starCountRef = ref(db, 'videos');
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       console.log('DATA: ', data);
+      this.data = data;
     });
   }
 }
