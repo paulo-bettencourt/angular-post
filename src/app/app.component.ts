@@ -10,11 +10,13 @@ import { initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { getDatabase, connectDatabaseEmulator } from 'firebase/database';
 
-initializeApp(environment.firebaseConfig);
-connectAuthEmulator(getAuth(), 'http://localhost:9099', {
-  disableWarnings: true,
-});
-connectDatabaseEmulator(getDatabase(), 'localhost', 9000);
+try {
+  initializeApp(environment.firebaseConfig);
+  connectAuthEmulator(getAuth(), 'http://localhost:9099', {
+    disableWarnings: true,
+  });
+  connectDatabaseEmulator(getDatabase(), 'localhost', 9000);
+} catch {}
 
 @Component({
   standalone: true,

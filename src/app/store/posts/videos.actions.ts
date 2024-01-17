@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Post } from 'src/app/models/videos.interface';
+import { Post } from 'src/app/models/post.interface';
 
 // export const setVideos = createAction('[Videos Component] Set videos', props<{ videos: Video[] }>() );
 
