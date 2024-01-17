@@ -41,9 +41,9 @@ export default class RegisterComponent implements OnInit {
   submitForm() {
     if (this.loginForm.valid) {
       const auth = this.loginForm.value;
-      this.apiService.register(auth).subscribe((data: any) => {
-        this.isLogged = true;
-      });
+      // this.apiService.register(auth).subscribe((data: any) => {
+      //   this.isLogged = true;
+      // });
     } else {
       // Form is invalid, handle accordingly
     }

@@ -1,6 +1,6 @@
-export interface Video {
+export interface Post {
+  description: string;
   id: number;
-  title: string,
-  description: string,
-  link: string
+  title: string;
+  videoUrl: string;
 }

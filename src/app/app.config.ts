@@ -6,7 +6,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore, StoreModule } from '@ngrx/store';
 
 import { appRoutes } from './app.routes';
-import { booksReducer } from './store/videos/videos.reducer';
+import { postsReducer } from './store/videos/videos.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideClientHydration(),
     provideRouter(appRoutes),
-    importProvidersFrom(StoreModule.forRoot({ videos: booksReducer }))
+    importProvidersFrom(StoreModule.forRoot({ videos: postsReducer })),
   ],
 };

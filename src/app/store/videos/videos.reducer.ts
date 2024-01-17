@@ -1,12 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { Video } from 'src/app/models/videos.interface';
+import { Post } from 'src/app/models/videos.interface';
 
-import { VideosApiActions } from './videos.actions';
+import { PostsApiActions } from './videos.actions';
 
+export const initialState: ReadonlyArray<Post> = [];
 
-export const initialState: ReadonlyArray<Video> = [];
-
-export const booksReducer = createReducer(
+export const postsReducer = createReducer(
   initialState,
-  on(VideosApiActions.retrievedVideosList, (_state, { videos }) => videos)
+  on(PostsApiActions.retrievedPostsList, (_state, { posts }) => posts)
 );

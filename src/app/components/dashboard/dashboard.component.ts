@@ -56,5 +56,13 @@ export default class DashboardComponent implements OnInit {
       console.log('DATA: ', data);
       this.data = data;
     });
+    console.log(
+      'OBJETO: ',
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log('DATA: ', data);
+        this.data = data;
+      })
+    );
   }
 }
