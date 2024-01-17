@@ -11,26 +11,19 @@ import { PostsApiActions as PostsApiActions } from '../store/posts/videos.action
 })
 export class ApiService {
   http = inject(HttpClient);
-  db = getDatabase();
-  starCountRef = ref(this.db, 'videos');
-  posts = signal([]);
+  starCountRef = ref(getDatabase(), 'videos');
+  posts = signal<Post[]>;
   store = inject(Store<{ videos: Post[] }>);
 
   async getPosts() {
     await new Promise((resolve, reject) => {
       onValue(this.starCountRef, (snapshot) => {
         const posts = snapshot.val();
-        console.log('DATA do emulador: ', posts);
         resolve(
           this.store.dispatch(PostsApiActions.retrievedPostsList({ posts }))
         ),
           reject(null);
       });
     });
-    return this.posts();
-  }
-
-  getVideos() {
-    return this.http.get<any>(environment.API_POSTS);
   }
 }

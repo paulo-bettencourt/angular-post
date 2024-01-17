@@ -1,8 +1,12 @@
 <div class="pl-[2rem] pr-[2rem] pb-[2rem] text-justify">
-  <!--   <p class="text-justify">
-      Angular Post is a dedicated platform designed for Angular developers seeking a comprehensive and up-to-date resource for staying informed about the latest developments in the Angular ecosystem. 
-    </p> -->
+
   <div class="text-justify">
+    <p class="text-justify m-[auto] w-[80%] font-bold italic">
+      Angular Post is a dedicated platform designed for Angular developers seeking a comprehensive and up-to-date
+      resource
+      for staying informed about the latest developments in the Angular ecosystem. Check the latest updates below!
+    </p>
+    <hr class="mt-[2rem] mb-[2rem]">
     @for(post of posts(); track post.id ) {
     <ng-container *ngTemplateOutlet="dynamicPost; context: { videoSanitized: post }"></ng-container>
     }

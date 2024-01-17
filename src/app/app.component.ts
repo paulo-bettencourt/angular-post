@@ -31,6 +31,4 @@ try {
     FooterComponent,
   ],
 })
-export class AppComponent {
-  title = 'angular-post';
-}
+export class AppComponent {}
