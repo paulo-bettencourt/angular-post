@@ -22,18 +22,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   authService = inject(AuthService);
   auth = this.authService.getAuth();
-  isLogged$!: BehaviorSubject<boolean>;
+  isLogged$: BehaviorSubject<boolean> = this.authService.getData();
   isVisible = false;
 
   toggleMenu() {
     this.isVisible = !this.isVisible;
-  }
-
-  ngOnInit() {
-    this.isLogged$ = this.authService.getData();
-    console.log('valoor: ', this.isLogged$.value);
   }
 }

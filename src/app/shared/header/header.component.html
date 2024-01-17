@@ -21,26 +21,26 @@
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      @if(isLogged$ | async) {
-      <a routerLink="/register">Publish</a>
-      } @else {
+      @if(!(isLogged$ | async)) {
       <a routerLink="/register">Register</a>
+      } @else {
+      <a routerLink="/register">Publish</a>
       }
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      @if(isLogged$ | async) {
-      <a routerLink="/login">Profile</a>
-      } @else {
+      @if(!(isLogged$ | async)) {
       <a routerLink="/login">Login</a>
+      } @else {
+      <a routerLink="/login">Profile</a>
       }
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      @if(isLogged$ | async) {
-      <a routerLink="about">Logout</a>
-      } @else {
+      @if(!(isLogged$ | async)) {
       <a routerLink="about">About</a>
+      } @else {
+      <a routerLink="about">Logout</a>
       }
     </li>
     <hr class="bg-white visible md:invisible" />
