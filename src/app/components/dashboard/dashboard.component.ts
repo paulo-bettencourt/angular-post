@@ -1,8 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { getAuth } from 'firebase/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  fetchSignInMethodsForEmail,
+  getAuth,
+  getRedirectResult,
+} from 'firebase/auth';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'angular-post-dashboard',
@@ -11,10 +17,20 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export default class DashboardComponent {
-  auth = getAuth();
+export default class DashboardComponent implements OnInit {
   authService = inject(AuthService);
+  activatedRoute = inject(ActivatedRoute);
+  auth = this.authService.getAuth();
   router = inject(Router);
+  displayName = signal<string | null>('');
+  email = signal<string | null>('');
+
+  ngOnInit(): void {
+    this.auth.onAuthStateChanged((user) => {
+      user ? this.displayName.set(user.displayName) : null;
+      user ? this.email.set(user.email) : null;
+    });
+  }
 
   signOut() {
     this.auth.signOut();

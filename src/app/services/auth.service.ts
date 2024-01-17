@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getAuth } from 'firebase/auth';
+import { Auth, getAuth } from 'firebase/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthService {
     return this.dataSubject$;
   }
 
-  getAuth() {
+  getAuth(): Auth {
     return this.auth;
   }
 

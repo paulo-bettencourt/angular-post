@@ -1,15 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationExtras,
+  Router,
+  RouterLink,
+} from '@angular/router';
 import {
   Auth,
   browserLocalPersistence,
+  fetchSignInMethodsForEmail,
   getAuth,
+  getRedirectResult,
   GoogleAuthProvider,
+  onAuthStateChanged,
   setPersistence,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
 } from 'firebase/auth';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -35,9 +44,8 @@ export default class LoginComponent implements OnInit {
       Validators.compose([Validators.required, Validators.minLength(3)]),
     ],
   });
-  paramsRoute = '';
-  isLogged: boolean | null = null;
   auth = this.authService.getAuth();
+  isLogged = false;
 
   async ngOnInit(): Promise<void> {
     await this.authService
@@ -46,7 +54,7 @@ export default class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       })
       .catch(() => {
-        console.log('User not autenticated');
+        null;
       });
   }
 
@@ -81,8 +89,10 @@ export default class LoginComponent implements OnInit {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        const user = result.user;
-        this.router.navigate(['/about']);
+        const user = result?.user;
+        console.log('TOKEN: ', token);
+        console.log('USER: ', user);
+        this.router.navigate(['/dashboard']);
       })
       .catch((error) => {
         const errorCode = error.code;

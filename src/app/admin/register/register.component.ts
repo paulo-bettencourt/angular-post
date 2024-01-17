@@ -25,22 +25,16 @@ export default class RegisterComponent implements OnInit {
       Validators.compose([Validators.required, Validators.minLength(3)]),
     ],
   });
-  paramsRoute = '';
   isLogged = false;
-  view = 'login';
 
   async ngOnInit(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      resolve(this.authService.isUserLoggedIn()),
-        reject(console.log('ERROR: User is not logged in'));
-    })
+    await this.authService
+      .isUserLoggedIn()
       .then(() => {
-        this.authService.getData().value
-          ? this.router.navigate(['/dashboard'])
-          : null;
+        this.router.navigate(['/dasboard']);
       })
       .catch(() => {
-        console.log('User not logged in');
+        null;
       });
   }
 
@@ -49,7 +43,6 @@ export default class RegisterComponent implements OnInit {
       const auth = this.loginForm.value;
       this.apiService.register(auth).subscribe((data: any) => {
         this.isLogged = true;
-        this.view = data.auth;
       });
     } else {
       // Form is invalid, handle accordingly
