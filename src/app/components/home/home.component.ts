@@ -35,7 +35,7 @@ export default class HomeComponent {
     this.apiService.getPosts().then(() =>
       this.store.subscribe((data) => {
         console.log('STORE: ', data);
-        this.posts.set(data);
+        this.posts.set(data.posts);
         console.log('SIGNAL DO POSTS: ', this.posts());
       })
     );

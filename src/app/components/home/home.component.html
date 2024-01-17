@@ -3,8 +3,8 @@
       Angular Post is a dedicated platform designed for Angular developers seeking a comprehensive and up-to-date resource for staying informed about the latest developments in the Angular ecosystem. 
     </p> -->
   <div class="text-justify">
-    @for(video of videos$ | async; track $index ) {
-    <ng-container *ngTemplateOutlet="dynamicPost; context: { videoSanitized: video }"></ng-container>
+    @for(post of posts(); track post.id ) {
+    <ng-container *ngTemplateOutlet="dynamicPost; context: { videoSanitized: post }"></ng-container>
     }
   </div>
 </div>
@@ -12,12 +12,12 @@
 
 <ng-template
   #dynamicPost
-  let-video="videoSanitized"
+  let-post="videoSanitized"
 >
   <div class="w-3/4 m-auto">
     <div class="flex items-center justify-between">
       <div class="w-full ld:max-w-[75%] inline-block ml-2">
-        <h1 class="font-black text-4xl wrap lg:whitespace-nowrap">{{ video.title }}</h1>
+        <h1 class="font-black text-4xl wrap lg:whitespace-nowrap">{{ post.title }}</h1>
       </div>
       <div class="w-[0] xl:w-full justify-items-end invisible lg:visible">
         <hr class="bg-white w-[100%]" />
@@ -25,7 +25,7 @@
     </div>
     <div class="video mt-[2.5rem] mb-6">
       <iframe
-        [src]="sanitizeVideo(video.link)"
+        [src]="sanitizeVideo(post.videoUrl)"
         width="100%"
         height="300rem"
         frameborder="0"
@@ -33,7 +33,7 @@
       ></iframe>
     </div>
     <div class="text p-4 mt-[2.5rem] mb-[2.5rem]">
-      <p>{{ video.description }}</p>
+      <p>{{ post.description }}</p>
     </div>
   </div>
   <div class="block md:flex items-center text-center">
@@ -43,7 +43,3 @@
   </div>
   <div class="h-[6rem]"></div>
 </ng-template>
-
-<hr>
-<hr>
-<h1>{{posts() | json}}</h1>
