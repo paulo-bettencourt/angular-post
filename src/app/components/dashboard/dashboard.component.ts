@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { getDatabase, set, ref, onValue } from 'firebase/database';
 
 @Component({
   selector: 'angular-post-dashboard',
@@ -36,5 +37,21 @@ export default class DashboardComponent implements OnInit {
     this.auth.signOut();
     this.authService.setData(false);
     this.router.navigate(['/login']);
+  }
+
+  firebase() {
+    const db = getDatabase();
+    console.log('database: ', db);
+    set(ref(db, 'posts'), {
+      username: 'name',
+      email: 'email',
+      profile_picture: 'imageUrl',
+    });
+
+    const starCountRef = ref(db, 'posts');
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log('DATA: ', data);
+    });
   }
 }
