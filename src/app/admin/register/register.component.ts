@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
 export default class RegisterComponent implements OnInit {
   form = inject(FormBuilder);
