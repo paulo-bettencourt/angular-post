@@ -3,8 +3,8 @@ import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { environment } from 'environments/environment';
 import { getDatabase, onValue, ref } from 'firebase/database';
-import { Post } from '../models/post.interface';
-import { PostsApiActions as PostsApiActions } from '../store/posts.actions';
+import { Post } from '../../models/post.interface';
+import { PostsApiActions as PostsApiActions } from '../../store/posts.actions';
 
 @Injectable({
   providedIn: 'root',

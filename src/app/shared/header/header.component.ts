@@ -11,7 +11,7 @@ import {
 import { RouterModule } from '@angular/router';
 
 import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 

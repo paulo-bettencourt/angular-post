@@ -4,7 +4,7 @@ import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.interface';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/api/api.service';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 import { signal } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
