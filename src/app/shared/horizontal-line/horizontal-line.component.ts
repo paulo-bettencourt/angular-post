@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './horizontal-line.component.html',
-  styleUrl: './horizontal-line.component.scss',
 })
 export class HorizontalLineComponent {
-  @Input({required: true}) width!: string;
+  @Input({ required: true }) width!: string;
 }

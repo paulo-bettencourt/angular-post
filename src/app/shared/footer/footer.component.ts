@@ -8,6 +8,5 @@ import { HorizontalLineComponent } from '../horizontal-line/horizontal-line.comp
   standalone: true,
   imports: [CommonModule, HorizontalLineComponent],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {}
