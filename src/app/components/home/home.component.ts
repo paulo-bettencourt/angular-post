@@ -14,7 +14,6 @@ import { FooterComponent } from '../../shared/footer/footer.component';
   selector: 'angular-post-home',
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
   imports: [
     CommonModule,
     HttpClientModule,
@@ -25,13 +24,12 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 })
 export default class HomeComponent {
   store = inject(Store<{ posts: Post[] }>);
-  sanitizer = inject(DomSanitizer);
   apiService = inject(ApiService);
-  posts = signal<any[]>([]);
+  posts = signal<Post[]>([]);
 
   constructor() {
     this.apiService.getPosts().then(() =>
-      this.store.subscribe((data) => {
+      this.store.subscribe((data: { posts: Post[] }) => {
         this.posts.set(data.posts);
       })
     );

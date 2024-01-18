@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss',
 })
 export default class AboutComponent {}
