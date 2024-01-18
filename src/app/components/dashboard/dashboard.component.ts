@@ -39,30 +39,4 @@ export default class DashboardComponent implements OnInit {
     this.authService.setData(false);
     this.router.navigate(['/login']);
   }
-
-  firebase() {
-    const db = getDatabase();
-    console.log('database: ', db);
-    // set(ref(db, 'posts/' + new Date().getMilliseconds()), {
-    //   id: new Date().getMilliseconds(),
-    //   username: 'name222',
-    //   email: 'email',
-    //   profile_picture: 'imageUrl',
-    // });
-
-    const starCountRef = ref(db, 'videos');
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log('DATA: ', data);
-      this.data = data;
-    });
-    console.log(
-      'OBJETO: ',
-      onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log('DATA: ', data);
-        this.data = data;
-      })
-    );
-  }
 }

@@ -2,13 +2,3 @@
 <h1>You are logged in</h1>
 <h2>Your registered mail is {{email()}}</h2>
 <h2 (click)="signOut()">Logout</h2>
-<hr>
-<hr>
-<hr>
-<button (click)="firebase()">FIREBASE CREATE AND READ</button>
-<h1>DATA DISPLAYED FROM FIREBASE</h1>
-@for(video of data; track video.id) {
-<p>{{video.title}}</p>
-<p>{{video.description}}</p>
-<p>{{video.videoUrl}}</p>
-}

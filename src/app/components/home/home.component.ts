@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
-import { PostsApiActions } from 'src/app/store/posts/videos.actions';
 import { signal } from '@angular/core';
 
 import { FooterComponent } from '../../shared/footer/footer.component';
@@ -22,11 +21,9 @@ import { FooterComponent } from '../../shared/footer/footer.component';
     HorizontalLineComponent,
     FooterComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class HomeComponent {
   store = inject(Store<{ posts: Post[] }>);
-  videos$ = this.store.select('posts');
   sanitizer = inject(DomSanitizer);
   apiService = inject(ApiService);
   posts = signal<any[]>([]);

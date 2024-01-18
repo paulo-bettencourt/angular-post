@@ -11,9 +11,9 @@ import { PostsApiActions as PostsApiActions } from '../store/posts/videos.action
 })
 export class ApiService {
   http = inject(HttpClient);
+  store = inject(Store<{ videos: Post[] }>);
   starCountRef = ref(getDatabase(), 'videos');
   posts = signal<Post[]>;
-  store = inject(Store<{ videos: Post[] }>);
 
   async getPosts() {
     await new Promise((resolve, reject) => {
