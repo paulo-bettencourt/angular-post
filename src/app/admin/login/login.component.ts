@@ -28,7 +28,6 @@ import { AuthService } from 'src/app/services/auth.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
 })
 export default class LoginComponent implements OnInit {
   provider = new GoogleAuthProvider();

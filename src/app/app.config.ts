@@ -6,7 +6,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore, StoreModule } from '@ngrx/store';
 
 import { appRoutes } from './app.routes';
-import { postsReducer } from './store/posts/videos.reducer';
+import { postsReducer } from './store/posts.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
