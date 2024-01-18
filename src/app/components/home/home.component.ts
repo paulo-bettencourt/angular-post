@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 import { signal } from '@angular/core';
-
+import { YouTubePlayer } from '@angular/youtube-player';
 import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
@@ -20,6 +20,7 @@ import { FooterComponent } from '../../shared/footer/footer.component';
     HttpClientModule,
     HorizontalLineComponent,
     FooterComponent,
+    YouTubePlayer,
   ],
 })
 export default class HomeComponent {
@@ -34,9 +35,5 @@ export default class HomeComponent {
         this.posts.set(data.posts);
       })
     );
-  }
-
-  sanitizeVideo(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

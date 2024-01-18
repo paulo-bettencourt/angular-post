@@ -19,6 +19,7 @@
     "@angular/platform-server": "~17.0.0",
     "@angular/router": "~17.0.0",
     "@angular/ssr": "~17.0.0",
+    "@angular/youtube-player": "^17.1.0",
     "@ngrx/component-store": "~17.0.0",
     "@ngrx/effects": "~17.0.0",
     "@ngrx/entity": "~17.0.0",
@@ -76,4 +77,3 @@
     "typescript": "~5.2.2"
   }
 }
-
