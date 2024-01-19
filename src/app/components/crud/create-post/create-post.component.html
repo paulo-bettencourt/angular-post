@@ -1,36 +1,45 @@
 <div class="container w-[70%] text-center m-auto">
-  <form>
-    <p>
+  <form
+    [formGroup]="createPostForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <p class="mb-[2rem]">
       <label for="title">Title</label>
       <br>
       <input
         type="text"
         name="title"
         id="title"
-        class="w-full"
+        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+        formControlName="title"
       >
     </p>
-    <p>
+    <p class="mb-[2rem]">
       <label for="text">Text</label>
       <br>
-      <input
-        type="text"
+      <textarea
         name="text"
         id="text"
-        class="w-full"
+        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+        formControlName="description"
       >
+    </textarea>
     </p>
-    <p>
+    <p class="mb-[2rem]">
       <label for="youtubeId">Youtube Video ID</label>
       <br>
       <input
         type="text"
         name="youtubeId"
         id="youtubeId"
-        class="w-full"
+        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+        formControlName="youtubeId"
       >
     </p>
     <br>
-    <button>Submit</button>
+    <button
+      class="bg-white text-black w-full rounded-md p-[1rem]"
+      [disabled]="!createPostForm.valid"
+    >Submit</button>
   </form>
 </div>
