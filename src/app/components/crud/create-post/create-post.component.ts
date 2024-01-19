@@ -8,4 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-post.component.html',
   styles: ``,
 })
-export class CreatePostComponent {}
+export default class CreatePostComponent {}

@@ -28,6 +28,11 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./components/feed/feed.component'),
   },
   {
+    path: 'publish',
+    loadComponent: () =>
+      import('./components/crud/create-post/create-post.component'),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
