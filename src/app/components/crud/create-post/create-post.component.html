@@ -1,64 +1,77 @@
-<div class="container w-[70%] text-center m-auto">
-  <form
-    [formGroup]="createPostForm"
-    (ngSubmit)="onSubmit()"
-  >
-    <p class="mb-[2rem]">
-      <label for="title">Title</label>
+@if(!isSubmitted) {
+<ng-container *ngTemplateOutlet="postCreation"></ng-container>
+} @else {
+<ng-container *ngTemplateOutlet="postSubmitted"></ng-container>
+}
+
+
+<ng-template #postCreation>
+  <div class="container w-[70%] text-center m-auto">
+    <form
+      [formGroup]="createPostForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p class="mb-[2rem]">
+        <label for="title">Title</label>
+        <br>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+          formControlName="title"
+        >
+        @if(createPostForm.get('title')?.invalid && (createPostForm.get('title')?.dirty ||
+        createPostForm.get('title')?.touched)) {
+        @if(createPostForm.get('title')?.errors?.['required']) {
+      <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">Title is required</p>
+      }
+      @if(createPostForm.get('title')?.errors?.['minlength']) {
+      <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
+      }
+      }
+      </p>
+      <p class="mb-[2rem]">
+        <label for="description">Text</label>
+        <br>
+        <textarea
+          name="description"
+          id="description"
+          class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+          formControlName="description"
+        >
+      </textarea>
+        @if(createPostForm.get('description')?.invalid && (createPostForm.get('description')?.touched ||
+        createPostForm.get('description')?.dirty)) {
+        @if(createPostForm.get('description')?.errors?.['required']) {
+      <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A text for this post is required</p>
+      }
+      @if(createPostForm.get('description')?.errors?.['minlength']) {
+      <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
+      }
+      }
+      </p>
+      <p class="mb-[2rem]">
+        <label for="youtubeId">Youtube Video ID</label>
+        <br>
+        <input
+          type="text"
+          name="youtubeId"
+          id="youtubeId"
+          class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
+          formControlName="youtubeId"
+        >
+      </p>
       <br>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
-        formControlName="title"
-      >
-      @if(createPostForm.get('title')?.invalid && (createPostForm.get('title')?.dirty ||
-      createPostForm.get('title')?.touched)) {
-      @if(createPostForm.get('title')?.errors?.['required']) {
-    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">Title is required</p>
-    }
-    @if(createPostForm.get('title')?.errors?.['minlength']) {
-    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
-    }
-    }
-    </p>
-    <p class="mb-[2rem]">
-      <label for="description">Text</label>
-      <br>
-      <textarea
-        name="description"
-        id="description"
-        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
-        formControlName="description"
-      >
-    </textarea>
-      @if(createPostForm.get('description')?.invalid && (createPostForm.get('description')?.touched ||
-      createPostForm.get('description')?.dirty)) {
-      @if(createPostForm.get('description')?.errors?.['required']) {
-    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A text for this post is required</p>
-    }
-    @if(createPostForm.get('description')?.errors?.['minlength']) {
-    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
-    }
-    }
-    </p>
-    <p class="mb-[2rem]">
-      <label for="youtubeId">Youtube Video ID</label>
-      <br>
-      <input
-        type="text"
-        name="youtubeId"
-        id="youtubeId"
-        class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
-        formControlName="youtubeId"
-      >
-    </p>
-    <br>
-    <button
-      class="bg-white text-black w-full rounded-md p-[1rem]"
-      [disabled]="!createPostForm.valid"
-      [ngClass]="{'cursor-not-allowed' : !createPostForm.valid}"
-    >Submit</button>
-  </form>
-</div>
+      <button
+        class="bg-white text-black w-full rounded-md p-[1rem]"
+        [disabled]="!createPostForm.valid"
+        [ngClass]="{'cursor-not-allowed' : !createPostForm.valid}"
+      >Submit</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #postSubmitted>
+  <h1>Your post has been submitted</h1>
+</ng-template>
