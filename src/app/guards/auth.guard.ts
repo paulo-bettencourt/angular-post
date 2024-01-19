@@ -21,7 +21,7 @@ export const authGuard: CanActivateFn = async () => {
   authService.setData(isLoggedIn);
 
   if (!isLoggedIn) {
-    router.navigateByUrl('/home'); // Adjust the route to your home page
+    router.navigateByUrl('/home');
   }
 
   return isLoggedIn;

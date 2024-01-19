@@ -22,7 +22,6 @@ try {
   standalone: true,
   selector: 'angular-post-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
   imports: [
     RouterModule,
     MenuComponent,
