@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Validators } from '@angular/forms';
 import {
   FormArray,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -20,8 +20,8 @@ export default class CreatePostComponent {
   createPostForm = this.fb.group({
     author: [''],
     title: ['', [Validators.required, Validators.minLength(5)]],
-    description: ['', Validators.required],
-    youtubeId: ['', Validators.required],
+    description: ['', [Validators.required, Validators.minLength(5)]],
+    youtubeId: [''],
   });
 
   onSubmit() {

@@ -33,7 +33,15 @@
         formControlName="description"
       >
     </textarea>
-
+      @if(createPostForm.get('description')?.invalid && (createPostForm.get('description')?.touched ||
+      createPostForm.get('description')?.dirty)) {
+      @if(createPostForm.get('description')?.errors?.['required']) {
+    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A text for this post is required</p>
+    }
+    @if(createPostForm.get('description')?.errors?.['minlength']) {
+    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
+    }
+    }
     </p>
     <p class="mb-[2rem]">
       <label for="youtubeId">Youtube Video ID</label>
@@ -50,6 +58,7 @@
     <button
       class="bg-white text-black w-full rounded-md p-[1rem]"
       [disabled]="!createPostForm.valid"
+      [ngClass]="{'cursor-not-allowed' : !createPostForm.valid}"
     >Submit</button>
   </form>
 </div>
