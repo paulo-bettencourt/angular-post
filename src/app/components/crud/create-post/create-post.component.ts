@@ -19,7 +19,7 @@ export default class CreatePostComponent {
   fb = inject(FormBuilder);
   createPostForm = this.fb.group({
     author: [''],
-    title: ['', Validators.required],
+    title: ['', [Validators.required, Validators.minLength(5)]],
     description: ['', Validators.required],
     youtubeId: ['', Validators.required],
   });

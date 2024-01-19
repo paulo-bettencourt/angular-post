@@ -15,10 +15,14 @@
       >
       @if(createPostForm.get('title')?.invalid && (createPostForm.get('title')?.dirty ||
       createPostForm.get('title')?.touched)) {
-    <p class="mt-[0.5rem] bg-red text-white">Title is required</p>
+      @if(createPostForm.get('title')?.errors?.['required']) {
+    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">Title is required</p>
+    }
+    @if(createPostForm.get('title')?.errors?.['minlength']) {
+    <p class="mt-[0.5rem] bg-[#FF0000] text-white rounded-md">A mininum of 5 words is required</p>
+    }
     }
     </p>
-
     <p class="mb-[2rem]">
       <label for="description">Text</label>
       <br>
@@ -29,6 +33,7 @@
         formControlName="description"
       >
     </textarea>
+
     </p>
     <p class="mb-[2rem]">
       <label for="youtubeId">Youtube Video ID</label>
