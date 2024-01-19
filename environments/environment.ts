@@ -11,6 +11,6 @@ export const environment = {
     storageBucket: 'angular-post-1a202.appspot.com',
     messagingSenderId: '98752778733',
     appId: '1:98752778733:web:b32fe4efa83a7fff1c17e4',
-    databaseURL: 'http://localhost:9000?ns=emulatorui',
+    databaseURL: 'http://localhost:9000?ns=angular-post-1a202',
   },
 };

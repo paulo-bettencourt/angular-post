@@ -19,6 +19,7 @@ export class ApiService {
     await new Promise((resolve, reject) => {
       onValue(this.starCountRef, (snapshot) => {
         const posts = snapshot.val();
+        console.log('POSTS: ', posts);
         resolve(
           this.store.dispatch(PostsApiActions.retrievedPostsList({ posts }))
         ),
