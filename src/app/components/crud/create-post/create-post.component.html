@@ -13,13 +13,18 @@
         class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
         formControlName="title"
       >
+      @if(createPostForm.get('title')?.invalid && (createPostForm.get('title')?.dirty ||
+      createPostForm.get('title')?.touched)) {
+    <p class="mt-[0.5rem] bg-red text-white">Title is required</p>
+    }
     </p>
+
     <p class="mb-[2rem]">
-      <label for="text">Text</label>
+      <label for="description">Text</label>
       <br>
       <textarea
-        name="text"
-        id="text"
+        name="description"
+        id="description"
         class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
         formControlName="description"
       >

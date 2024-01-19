@@ -20,7 +20,7 @@ export default class CreatePostComponent {
   createPostForm = this.fb.group({
     author: [''],
     title: ['', Validators.required],
-    text: ['', Validators.required],
+    description: ['', Validators.required],
     youtubeId: ['', Validators.required],
   });
 
