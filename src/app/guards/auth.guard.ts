@@ -1,27 +1,28 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { environment } from 'environments/environment';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { AuthService } from '../services/auth/auth.service';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export const authGuard: CanActivateFn = async () => {
   const auth = getAuth();
   const authService = inject(AuthService);
-  const user = await new Promise((resolve, reject) => {
-    const unsubscribe = onAuthStateChanged(
+  const router = inject(Router);
+
+  const isLoggedIn: any = await new Promise((resolve, reject) => {
+    onAuthStateChanged(
       auth,
       (user) => {
-        unsubscribe();
-        resolve(user);
+        resolve(user ? true : false);
       },
       reject
     );
   });
 
-  const isLoggedIn = !!user;
-
   authService.setData(isLoggedIn);
+
+  if (!isLoggedIn) {
+    router.navigateByUrl('/home'); // Adjust the route to your home page
+  }
 
   return isLoggedIn;
 };

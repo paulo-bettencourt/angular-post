@@ -23,4 +23,13 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./components/dashboard/dashboard.component'),
     canActivate: [authGuard],
   },
+  {
+    path: 'feed',
+    loadComponent: () => import('./components/feed/feed.component'),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];

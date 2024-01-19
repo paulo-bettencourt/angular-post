@@ -1,8 +1,3 @@
-12:50:05.554 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-12:50:05.659 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
-12:50:05.892 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - emulatorui successfully activated FBKV (SurveyIdle(0)) wait: 90ms, init: 0ms
-12:50:05.978 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
-namespace angular-post-1a202, but the emulator is configured for emulatorui. To 
-opt-out of single project mode add/set the singleProjectMode: false property in 
-the firebase.json emulators config. 
-12:50:05.982 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - angular-post-1a202 successfully activated FBKV (SurveyIdle(0)) wait: 2ms, init: 0ms
+15:05:24.843 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+15:05:24.951 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+15:05:51.731 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - angular-post-1a202 successfully activated FBKV (SurveyIdle(0)) wait: 98ms, init: 0ms
