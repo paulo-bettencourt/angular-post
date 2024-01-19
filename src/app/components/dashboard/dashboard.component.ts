@@ -12,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export default class DashboardComponent implements OnInit {
   authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);
-  router = inject(Router);
   auth = this.authService.getAuth();
   displayName = signal<string | null>('');
   email = signal<string | null>('');
@@ -22,11 +21,5 @@ export default class DashboardComponent implements OnInit {
       user ? this.displayName.set(user.displayName) : null;
       user ? this.email.set(user.email) : null;
     });
-  }
-
-  signOut() {
-    this.auth.signOut();
-    this.authService.setData(false);
-    this.router.navigate(['/login']);
   }
 }

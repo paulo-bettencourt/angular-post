@@ -17,7 +17,11 @@
     class="h-[100vh] md:h-[0] md:mt-[3rem] md:mb-[3rem] md:flex items-center justify-betweenv w-full md:w-3/4 m-auto text-lg font-black bg-black"
   >
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
-      <p class="m-10"><a routerLink="">Posts</a></p>
+      @if(!(isLogged$ | async)) {
+      <p class="m-10"><a routerLink="">Home</a></p>
+      } @else {
+      <a routerLink="">Posts</a>
+      }
     </li>
     <hr class="bg-white w-full md:w-1/5 md:m-[10px]" />
     <li class="m-2.5 transition ease-in-out hover:scale-150 p-[2rem] md:p-[0]">
@@ -40,7 +44,7 @@
       @if(!(isLogged$ | async)) {
       <a routerLink="about">About</a>
       } @else {
-      <a routerLink="about">Logout</a>
+      <a (click)="signOut()">Logout</a>
       }
 
     </li>
