@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { environment } from 'environments/environment';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, ref, set } from 'firebase/database';
 import { Post } from '../../models/post.interface';
 import { PostsApiActions as PostsApiActions } from '../../store/posts.actions';
 
@@ -25,6 +25,15 @@ export class DatabaseService {
         ),
           reject(null);
       });
+    });
+  }
+
+  writePost(formData: any) {
+    const db = getDatabase();
+    set(ref(db, 'users/' + formData.author), {
+      title: formData.title,
+      description: formData.description,
+      youtubeId: formData.youtubeId,
     });
   }
 }
