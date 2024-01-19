@@ -4,7 +4,7 @@ import { Component, inject, signal } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.interface';
-import { ApiService } from 'src/app/services/api/api.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizontal-line.component';
 
 @Component({
@@ -21,11 +21,11 @@ import { HorizontalLineComponent } from 'src/app/shared/horizontal-line/horizont
 })
 export default class FeedComponent {
   store = inject(Store<{ posts: Post[] }>);
-  apiService = inject(ApiService);
+  databaseService = inject(DatabaseService);
   posts = signal<Post[]>([]);
 
   constructor() {
-    this.apiService.getPosts().then(() =>
+    this.databaseService.getPosts().then(() =>
       this.store.subscribe((data: { posts: Post[] }) => {
         this.posts.set(data.posts);
       })

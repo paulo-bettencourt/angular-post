@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export default class RegisterComponent implements OnInit {
   form = inject(FormBuilder);
-  apiService = inject(ApiService);
+  databaseService = inject(DatabaseService);
   router = inject(Router);
   authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);

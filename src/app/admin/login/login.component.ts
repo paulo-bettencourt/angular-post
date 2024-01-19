@@ -20,7 +20,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from 'firebase/auth';
-import { ApiService } from 'src/app/services/api/api.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -32,7 +32,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export default class LoginComponent implements OnInit {
   provider = new GoogleAuthProvider();
-  apiService = inject(ApiService);
+  databaseService = inject(DatabaseService);
   router = inject(Router);
   authService = inject(AuthService);
   activatedRoute = inject(ActivatedRoute);

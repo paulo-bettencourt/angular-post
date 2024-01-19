@@ -9,7 +9,7 @@ import { PostsApiActions as PostsApiActions } from '../../store/posts.actions';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class DatabaseService {
   http = inject(HttpClient);
   store = inject(Store<{ videos: Post[] }>);
   starCountRef = ref(getDatabase(), 'videos');
