@@ -30,7 +30,8 @@ export class DatabaseService {
 
   writePost(formData: any) {
     const db = getDatabase();
-    set(ref(db, 'users/' + formData.author), {
+    console.log('USER DATA TO BE SUBMITTED:', formData);
+    set(ref(db, 'videos/' + formData.author), {
       title: formData.title,
       description: formData.description,
       youtubeId: formData.youtubeId,

@@ -7,11 +7,13 @@ export const authGuard: CanActivateFn = async () => {
   const auth = getAuth();
   const authService = inject(AuthService);
   const router = inject(Router);
+  let userEmail!: string;
 
   const isLoggedIn: any = await new Promise((resolve, reject) => {
     onAuthStateChanged(
       auth,
       (user) => {
+        user?.email ? authService.setUserEmail(user.email) : null;
         resolve(user ? true : false);
       },
       reject

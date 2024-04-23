@@ -1,3 +1,7 @@
 15:05:24.843 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
 15:05:24.951 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
 15:05:51.731 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - angular-post-1a202 successfully activated FBKV (SurveyIdle(0)) wait: 98ms, init: 0ms
+12:56:12.069 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+12:56:12.092 [NamespaceSystem-akka.actor.default-dispatcher-390] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: angular-post-1a202
+12:56:12.099 [NamespaceSystem-akka.actor.default-dispatcher-451] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for angular-post-1a202
+12:56:12.103 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.

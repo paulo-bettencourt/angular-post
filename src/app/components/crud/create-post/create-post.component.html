@@ -34,13 +34,12 @@
       <p class="mb-[2rem]">
         <label for="description">Text</label>
         <br>
-        <textarea
+        <input
           name="description"
           id="description"
           class="w-full p-[0.5rem] text-black rounded-md mt-[1rem]"
           formControlName="description"
         >
-      </textarea>
         @if(createPostForm.get('description')?.invalid && (createPostForm.get('description')?.touched ||
         createPostForm.get('description')?.dirty)) {
         @if(createPostForm.get('description')?.errors?.['required']) {
