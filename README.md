@@ -22,7 +22,7 @@
 
 ## Nx Workspace
 
--Developed within an Nx workspace for improved project structure, code organization, and scalability.
+- Developed within an Nx workspace for improved project structure, code organization, and scalability.
 
 This Angular frontend application delivers a seamless user experience with enhanced security features, reactive data management, and a scalable architecture leveraging industry-standard Angular technologies.
 
